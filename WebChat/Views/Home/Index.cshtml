@@ -12,40 +12,226 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-   <style>
-       .top-form {
-           margin-top: 20px;
-       }
-       .text-area-form {
-           border-color: #8b00ff;
-           border-radius: 20px;
-           text-align: center;
-       }
-   </style>
-</head>
-<body>
-    
-    <div class="container-fuild">
-        <div class="row">
-            <div class="col">
-                        <div class="form-inline top-form">
-                                <button class="btn shadow-none" type="button" >
-                                    <i class="fa fa-paperclip fa-2x" aria-hidden="true"  style="color:#8b00ff"></i>
-                                  
-                                </button>
-                                <textarea class="text-area-form" placeholder="Type message"></textarea>
-                                <button class="btn shadow-none" type="button">
-                                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true"  style="color:#8b00ff"></i>
-                                 
-                               </button>
-                        </div>
-                   
-            </div>
-        </div>
-    </div>
+    <style>
+        .top-form {
+            margin-top: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 350px;
+            margin: 0px auto;
+            text-align: center;
+            padding: 15px;
+        }
 
+        .text-area-form {
+            border-color: #333333;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .message-box {
+            margin-top: 20px;
+        }
+
+        .me-message {
+            width: 250px;
+            border-color: #8b00ff;
+            background-color: #333333;
+            border: 0px;
+            border-radius: 0px 21px 29px 24px;
+        }
+
+        .other-message {
+            width: 250px;
+            border-color: #8b00ff;
+            background-color: #1298e5;
+            border: 0px;
+            border-radius: 21px 21px 29px 0px;
+        }
+
+        .list-group-item {
+            border: none;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .container {
+            margin-top:56px;
+        }
+    </style>
+   
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-light bg-dark">
+        <a class="navbar-brand text-white" href="#">FreeChat</a>
+
+    </nav>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col mx-auto">
+                <ul class="list-group message-box">
+                    <li class="list-group-item align-self-end">
+
+                        <div class="card me-message">
+                            <img src="~/1.png" alt="Avatar" class=" avatar">
+                            <p class="text text-white text-center">
+                                message1
+                                <div class="text text-right mr-3 text-white">
+                                    <small>18:50</small>
+                                </div>
+                            </p>
+                        </div>
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        <div class="card other-message align-self-start">
+
+                            <p class="text text-white text-center">
+                                message1
+                                <div class="text text-right mr-3 text-white">
+                                    <small>18:50</small>
+                                </div>
+                            </p>
+                            <img src="~/other.png" alt="Avatar" class=" avatar">
+                        </div>
+
+                    </li>
+                    <li class="list-group-item align-self-end">
+
+                        <div class="card me-message ">
+                            <img src="~/1.png" alt="Avatar" class=" avatar">
+                            <p class="text text-white text-center">
+                                message1
+                                <div class="text text-right mr-3 text-white">
+                                    <small>18:50</small>
+                                </div>
+                            </p>
+                        </div>
+
+                    </li>
+
+
+
+
+                </ul>
+                <div class="form-inline top-form text-center">
+                    <button class="btn shadow-none" type="button">
+                        <i class="fa fa-paperclip fa-2x" aria-hidden="true" style="color:#333333"></i>
+
+                    </button>
+                    <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea>
+                    <input type="button" class="btn shadow-none" id="">
+                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true" style="color:#333333"></i>
+
+
+                </div>
+            </div>
+
+        </div>
+        <input type="button" id="sendButton" value="Send Message" />
+        <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
+        <script>
+            "use strict";
+            var connection = connection = new signalR.HubConnectionBuilder()
+                .configureLogging(signalR.LogLevel.Debug)
+                .withUrl("/chat", {
+                    skipNegotiation: true,
+                    transport: signalR.HttpTransportType.WebSockets
+                })
+                .build();
+
+            //Disable send button until connection is established
+            document.getElementById("sendButton").disabled = true;
+
+            connection.on("ReceiveMessage", function (message) {
+                text = message;
+                var parent = document.getElementsByTagName("ul")[0];
+                var li = document.createElement("li");
+                li.className = "list-group-item align-self-end";
+                var text = document.getElementById('messageText').value;
+                var hours = 10;
+                var minutes = 10;
+                li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./other.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
+
+                parent.appendChild(li);
+            });
+
+            connection.start().then(function () {
+                document.getElementById("sendButton").disabled = false;
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            document.getElementById("sendButton").addEventListener("click", function (event) {
+
+                var message = document.getElementById("messageText").value;
+
+                connection.invoke("Send", message).catch(function (err) {
+                    return console.error(err.toString());
+                });
+                var currentDate = new Date();
+                var parent = document.getElementsByTagName("ul")[0];
+                var li = document.createElement("li");
+                li.className = "list-group-item align-self-end";
+                var text = document.getElementById('messageText').value;
+                var hours = currentDate.getHours();
+                var minutes = currentDate.getMinutes();
+                li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
+
+                parent.appendChild(li);
+                event.preventDefault();
+            });
+
+            /* const hubConnection = new signalR.HubConnectionBuilder()
+                 .withUrl("/chat")
+                 .build();
+
+             hubConnection.on("Send", function (data) {
+
+                 text = data;
+                 var parent = document.getElementsByTagName("ul")[0];
+                 var li = document.createElement("li");
+                 li.className = "list-group-item align-self-end";
+                 var text = document.getElementById('messageText').value;
+                 li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./other.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
+
+                 parent.appendChild(li);
+
+             });
+
+             function sendmessage() {
+                 var currentDate = new Date();
+                 var parent = document.getElementsByTagName("ul")[0];
+                 var li = document.createElement("li");
+                 li.className = "list-group-item align-self-end";
+                 var text = document.getElementById('messageText').value;
+                 var hours = currentDate.getHours();
+                 var minutes = currentDate.getMinutes();
+                 li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
+
+                 parent.appendChild(li);
+
+                 let message = document.getElementById("messageText").value;
+                 hubConnection.invoke("Send", message);
+             }
+
+             hubConnection.start();*/
+
+        </script>
+
+    </div>
+    
+  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
-</html>
+</html>/script>
