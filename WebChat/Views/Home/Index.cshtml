@@ -61,6 +61,14 @@
         .container {
             margin-top:56px;
         }
+        
+        .fa-paper-plane {
+            padding-left: 4px;
+            color:#333333;
+        }
+        .fa-paper-plane:hover {
+            color:chartreuse;
+        }
     </style>
    
 </head>
@@ -128,110 +136,24 @@
 
                     </button>
                     <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea>
-                    <input type="button" class="btn shadow-none" id="">
-                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true" style="color:#333333"></i>
+                  
+                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true" id="sendButton" ></i>
 
 
                 </div>
             </div>
 
         </div>
-        <input type="button" id="sendButton" value="Send Message" />
-        <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
-        <script>
-            "use strict";
-            var connection = connection = new signalR.HubConnectionBuilder()
-                .configureLogging(signalR.LogLevel.Debug)
-                .withUrl("/chat", {
-                    skipNegotiation: true,
-                    transport: signalR.HttpTransportType.WebSockets
-                })
-                .build();
-
-            //Disable send button until connection is established
-            document.getElementById("sendButton").disabled = true;
-
-            connection.on("ReceiveMessage", function (message) {
-                text = message;
-                var parent = document.getElementsByTagName("ul")[0];
-                var li = document.createElement("li");
-                li.className = "list-group-item align-self-end";
-                var text = document.getElementById('messageText').value;
-                var hours = 10;
-                var minutes = 10;
-                li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./other.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
-
-                parent.appendChild(li);
-            });
-
-            connection.start().then(function () {
-                document.getElementById("sendButton").disabled = false;
-            }).catch(function (err) {
-                return console.error(err.toString());
-            });
-
-            document.getElementById("sendButton").addEventListener("click", function (event) {
-
-                var message = document.getElementById("messageText").value;
-
-                connection.invoke("Send", message).catch(function (err) {
-                    return console.error(err.toString());
-                });
-                var currentDate = new Date();
-                var parent = document.getElementsByTagName("ul")[0];
-                var li = document.createElement("li");
-                li.className = "list-group-item align-self-end";
-                var text = document.getElementById('messageText').value;
-                var hours = currentDate.getHours();
-                var minutes = currentDate.getMinutes();
-                li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
-
-                parent.appendChild(li);
-                event.preventDefault();
-            });
-
-            /* const hubConnection = new signalR.HubConnectionBuilder()
-                 .withUrl("/chat")
-                 .build();
-
-             hubConnection.on("Send", function (data) {
-
-                 text = data;
-                 var parent = document.getElementsByTagName("ul")[0];
-                 var li = document.createElement("li");
-                 li.className = "list-group-item align-self-end";
-                 var text = document.getElementById('messageText').value;
-                 li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./other.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
-
-                 parent.appendChild(li);
-
-             });
-
-             function sendmessage() {
-                 var currentDate = new Date();
-                 var parent = document.getElementsByTagName("ul")[0];
-                 var li = document.createElement("li");
-                 li.className = "list-group-item align-self-end";
-                 var text = document.getElementById('messageText').value;
-                 var hours = currentDate.getHours();
-                 var minutes = currentDate.getMinutes();
-                 li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + hours + ":" + minutes + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
-
-                 parent.appendChild(li);
-
-                 let message = document.getElementById("messageText").value;
-                 hubConnection.invoke("Send", message);
-             }
-
-             hubConnection.start();*/
-
-        </script>
-
     </div>
+
     
-  
+    <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/index.js"> </script>
+
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
-</html>/script>
+</html>
