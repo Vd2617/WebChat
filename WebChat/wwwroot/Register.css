@@ -26,9 +26,11 @@ body {
 }
 
 .error {
-    background-color: #ffc;
-    border: 1px solid #c00;
+    background-color: #00adef;
+    border: 1px solid white;
     color: red;
     border-radius: 53px 70px 60px 64px;
+    margin-top:10px;
+    text-align:center
 }
 
