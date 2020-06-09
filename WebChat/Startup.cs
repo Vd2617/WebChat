@@ -33,12 +33,28 @@ namespace WebChat
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityContext>();
+           
             services.AddControllersWithViews();
             services.AddSignalR();
-            services.AddDbContext<MessageContext>(options =>
+            services.AddDbContext<IdentityContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<User, IdentityRole>(opts => {
+
+                opts.Password.RequiredLength = 1;
+
+                opts.Password.RequireNonAlphanumeric = false;
+
+                opts.Password.RequireLowercase = false;
+
+                opts.Password.RequireUppercase = false;
+
+                opts.Password.RequireDigit = false;
+
+                //opts.Lockout.AllowedForNewUsers = true;
+
+            })
+
+            .AddEntityFrameworkStores<IdentityContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,12 +66,15 @@ namespace WebChat
             }
             app.UseHttpsRedirection();
 
+
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
             
-            app.UseStaticFiles();
+            
 
             app.UseEndpoints(endpoints =>
             {

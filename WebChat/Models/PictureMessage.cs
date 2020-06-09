@@ -9,6 +9,7 @@ namespace WebChat.Models
     {
         string messagePath;
 
+        public PictureMessage(string time):base(time) { }
         public string MessagePath { get => messagePath; set => messagePath = value; }
     }
 }

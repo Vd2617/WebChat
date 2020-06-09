@@ -9,6 +9,7 @@ namespace WebChat.Models
     {
         string text;
         public TextMessage(string time):base(time) { }//string time format 00:00
+        public TextMessage() { }
         public string Text { get => text; set => text = value; }
     }
 }

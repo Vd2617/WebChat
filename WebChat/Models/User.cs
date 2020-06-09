@@ -10,6 +10,10 @@ namespace WebChat.Models
     {
         DateTime lastVisit;
         string avatarPath;
+       public  User() {
+            lastVisit = new DateTime();
+            avatarPath = "";
+        }
 
         public DateTime Lastvisit { get => lastVisit; set => lastVisit = value; }
         public string AvatarPath { get => avatarPath; set => avatarPath = value; }

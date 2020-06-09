@@ -9,6 +9,7 @@ namespace WebChat.Models
 {
     public class IdentityContext: IdentityDbContext<User>
     {
+        public DbSet<TextMessage> TextMessages { get; set; }
         public IdentityContext(DbContextOptions<IdentityContext> options)
           : base(options)
         {

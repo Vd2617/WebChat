@@ -30,6 +30,7 @@ namespace WebChat.Models
 
             this.messageTime = time;
         }
+        public Message() { }
           
             public string Id { get => id; set => id = value; }
             public string MessageTime { get => messageTime; set => messageTime = value; }
