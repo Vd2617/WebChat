@@ -1,0 +1,34 @@
+﻿
+body {
+    background: #00adef !important; 
+    
+}
+
+
+#parent {
+    padding: 5% 0;
+}
+
+#child {
+    padding: 10% 0;
+}
+
+.row {
+    border: 1px;
+}
+
+.form-control {
+    border-radius: 53px 70px 60px 64px !important;
+}
+
+.btn {
+    border-radius: 53px 70px 60px 64px !important;
+}
+
+.error {
+    background-color: #ffc;
+    border: 1px solid #c00;
+    color: red;
+    border-radius: 53px 70px 60px 64px;
+}
+
