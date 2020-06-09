@@ -1,1 +1,59 @@
 ﻿
+.top-form {
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 350px;
+    margin: 0px auto;
+    text-align: center;
+    padding: 15px;
+}
+
+.text-area-form {
+    border-color: #333333;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.message-box {
+    margin-top: 20px;
+}
+
+.me-message {
+    width: 250px;
+    border-color: #8b00ff;
+    background-color: #333333;
+    border: 0px;
+    border-radius: 0px 21px 29px 24px;
+}
+
+.other-message {
+    width: 250px;
+    border-color: #8b00ff;
+    background-color: #1298e5;
+    border: 0px;
+    border-radius: 21px 21px 29px 0px;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.container {
+    margin-top: 56px;
+}
+
+.fa-paper-plane {
+    padding-left: 4px;
+    color: #333333;
+}
+
+    .fa-paper-plane:hover {
+        color: chartreuse;
+    }

@@ -25,6 +25,7 @@ namespace WebChat.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterView model)
         {
@@ -47,17 +48,9 @@ namespace WebChat.Controllers
                     }
                 }
             }
-            AddErrorsFromModel(ModelState.Values);
+            
             return View(model);
         }
-        private void AddErrorsFromModel(ModelStateDictionary.ValueEnumerable values)
-        {
-            foreach (ModelStateEntry modelState in values)
-                foreach (ModelError error in modelState.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.ErrorMessage.ToString());
-
-                }
-        }
+       
     }
 }

@@ -12,7 +12,7 @@ namespace WebChat.Models
         string avatarPath;
        public  User() {
             lastVisit = new DateTime();
-            avatarPath = "";
+            avatarPath = "~/other.png";
         }
 
         public DateTime Lastvisit { get => lastVisit; set => lastVisit = value; }

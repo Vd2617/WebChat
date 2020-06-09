@@ -34,14 +34,6 @@ namespace WebChat.Models
 
 
 
-        [Required]
-
-        [Compare("Password", ErrorMessage = "Passwords do not match")]
-
-        [DataType(DataType.Password)]
-
-        [Display(Name = "ConfirmPassword")]
-
-        public string PasswordConfirm { get; set; }
+       
     }
 }

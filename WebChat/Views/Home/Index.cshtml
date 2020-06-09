@@ -1,159 +1,81 @@
 ﻿
+
 @{
-    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <style>
-        .top-form {
-            margin-top: 20px;
-            padding-left: 15px;
-            padding-right: 15px;
-            width: 350px;
-            margin: 0px auto;
-            text-align: center;
-            padding: 15px;
-        }
+ @{
+    ViewData["Title"] = "Home";
+ }
 
-        .text-area-form {
-            border-color: #333333;
-            border-radius: 20px;
-            text-align: center;
-        }
+<div class="container">
+    <div class="row">
 
-        .message-box {
-            margin-top: 20px;
-        }
+        <div class="col mx-auto">
+            <ul class="list-group message-box">
+                <li class="list-group-item align-self-end">
 
-        .me-message {
-            width: 250px;
-            border-color: #8b00ff;
-            background-color: #333333;
-            border: 0px;
-            border-radius: 0px 21px 29px 24px;
-        }
+                    <div class="card me-message">
+                        <img src="~/1.png" alt="Avatar" class=" avatar">
+                        <p class="text text-white text-center">
+                            message1
+                            <div class="text text-right mr-3 text-white">
+                                <small>18:50</small>
+                            </div>
+                        </p>
+                    </div>
 
-        .other-message {
-            width: 250px;
-            border-color: #8b00ff;
-            background-color: #1298e5;
-            border: 0px;
-            border-radius: 21px 21px 29px 0px;
-        }
+                </li>
 
-        .list-group-item {
-            border: none;
-        }
+                <li class="list-group-item">
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-        .container {
-            margin-top:56px;
-        }
-        
-        .fa-paper-plane {
-            padding-left: 4px;
-            color:#333333;
-        }
-        .fa-paper-plane:hover {
-            color:chartreuse;
-        }
-    </style>
-   
-</head>
+                    <div class="card other-message align-self-start">
 
-<body>
-    <nav class="navbar fixed-top navbar-light bg-dark">
-        <a class="navbar-brand text-white" href="@Url.Action("Register", "Account")">FreeChat</a>
+                        <p class="text text-white text-center">
+                            message1
+                            <div class="text text-right mr-3 text-white">
+                                <small>18:50</small>
+                            </div>
+                        </p>
+                        <img src="~/other.png" alt="Avatar" class=" avatar">
+                    </div>
 
-    </nav>
+                </li>
+                <li class="list-group-item align-self-end">
 
-    <div class="container">
-        <div class="row">
+                    <div class="card me-message ">
+                        <img src="~/1.png" alt="Avatar" class=" avatar">
+                        <p class="text text-white text-center">
+                            message1
+                            <div class="text text-right mr-3 text-white">
+                                <small>18:50</small>
+                            </div>
+                        </p>
+                    </div>
 
-            <div class="col mx-auto">
-                <ul class="list-group message-box">
-                    <li class="list-group-item align-self-end">
-
-                        <div class="card me-message">
-                            <img src="~/1.png" alt="Avatar" class=" avatar">
-                            <p class="text text-white text-center">
-                                message1
-                                <div class="text text-right mr-3 text-white">
-                                    <small>18:50</small>
-                                </div>
-                            </p>
-                        </div>
-
-                    </li>
-
-                    <li class="list-group-item">
-
-                        <div class="card other-message align-self-start">
-
-                            <p class="text text-white text-center">
-                                message1
-                                <div class="text text-right mr-3 text-white">
-                                    <small>18:50</small>
-                                </div>
-                            </p>
-                            <img src="~/other.png" alt="Avatar" class=" avatar">
-                        </div>
-
-                    </li>
-                    <li class="list-group-item align-self-end">
-
-                        <div class="card me-message ">
-                            <img src="~/1.png" alt="Avatar" class=" avatar">
-                            <p class="text text-white text-center">
-                                message1
-                                <div class="text text-right mr-3 text-white">
-                                    <small>18:50</small>
-                                </div>
-                            </p>
-                        </div>
-
-                    </li>
+                </li>
 
 
 
 
-                </ul>
-                <div class="form-inline top-form text-center">
-                    <button class="btn shadow-none" type="button">
-                        <i class="fa fa-paperclip fa-2x" aria-hidden="true" style="color:#333333"></i>
+            </ul>
+            <div class="form-inline top-form text-center">
+                <button class="btn shadow-none" type="button">
+                    <i class="fa fa-paperclip fa-2x" aria-hidden="true" style="color:#333333"></i>
 
-                    </button>
-                    <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea>
-                  
-                    <i class="fa fa-paper-plane fa-2x" aria-hidden="true" id="sendButton" ></i>
+                </button>
+                <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea>
+
+                <i class="fa fa-paper-plane fa-2x" aria-hidden="true" id="sendButton"></i>
 
 
-                </div>
             </div>
-
         </div>
+
     </div>
-
-    
-    <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
-    <script src="~/index.js"> </script>
+</div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
-</html>

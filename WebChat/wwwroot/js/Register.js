@@ -2,22 +2,22 @@
 $(function () {
     $('form[name="callback"]').validate({
         rules: {
-            name: 'required',
-            password: 'required',
+            UserName: 'required',
+            Password: 'required',
             confirmpassword: {
-                equalTo: "#password",
+                equalTo: "#Password",
                 required: true,
             },
-            email: {
+            Email: {
                 required: true,
                 email: true,
             },
 
         },
         messages: {
-            name: 'Enter Name',
-            password: 'Enter Password',
-            email: 'Entrer correct E-mail',
+            UserName: 'Enter Name',
+            Password: 'Enter Password',
+            Email: 'Entrer correct E-mail',
             confirmpassword: 'Do not mach',
 
         },
@@ -26,3 +26,7 @@ $(function () {
         }
     });
 });
+
+
+
+
