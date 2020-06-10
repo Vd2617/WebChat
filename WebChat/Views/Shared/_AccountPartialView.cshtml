@@ -1,0 +1,19 @@
+﻿
+  @if (User.Identity.IsAuthenticated)
+    {
+        
+            <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+       
+        
+            <a class="nav-link text-white" asp-area="Identity" href="@Url.Action("Logout", "Account")">Logout</a>
+       
+    }
+    else
+    {
+        
+            <a class="nav-link text-white" asp-area="Identity" href="@Url.Action("Register", "Account")">Register</a>
+       
+      
+            <a class="nav-link text-white" asp-area="Identity" href="@Url.Action("Login", "Account")">Login</a>
+      
+    }

@@ -1,13 +1,9 @@
-﻿
-$(function () {
+﻿$(function () {
     $('form[name="callback"]').validate({
         rules: {
-            UserName: 'required',
+           
             Password: 'required',
-            confirmpassword: {
-                equalTo: "#Password",
-                required: true,
-            },
+           
             Email: {
                 required: true,
                 email: true,
@@ -15,10 +11,10 @@ $(function () {
 
         },
         messages: {
-            UserName: 'Enter Name',
+          
             Password: 'Enter Password',
             Email: 'Enter correct E-mail',
-            confirmpassword: 'Do not mach',
+           
 
         },
         submitHandler: function (form) {
@@ -26,7 +22,3 @@ $(function () {
         }
     });
 });
-
-
-
-

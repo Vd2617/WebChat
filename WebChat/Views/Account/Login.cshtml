@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model  WebChat.Models.LoginView.LoginViewModel;
+
+    <div class="container-fuild container-table" id="parent">
+        <div class="row " id="child">
+
+            <div class="  col-xs-0 col-lg-5 col-md-3 col-sm-3 col-1">
+
+            </div>
+
+            <div class="col mx-auto">
+                <div class="text text-white text-center">
+                    @if (Model != null)
+                    {
+                        <h1><small>Login or password not faund</small></h1>
+                    }
+
+                </div>
+                <form method="post" action="/Account/Login" name="callback">
+
+                    <fieldset class="form-group">
+                        @if (Model != null)
+                        {
+                            <input type="email" class="form-control  email" id="email" name="Email" placeholder="@Model.Email">
+                        }
+                        else
+                        {
+                            <input type="email" class="form-control  email" id="email" name="Email" placeholder="Email">
+                        }
+                    </fieldset>
+                    <fieldset class="form-group">
+
+                        <input type="password" class="form-control password" id="password" name="Password" placeholder="Password">
+
+                    </fieldset>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1 " name="RememeberMe">
+                        <label class="form-check-label text-white" for="exampleCheck1">Rememberm me?</label>
+                    </div>
+
+                    <button class="btn btn-outline-light btn-lg btn-block " type="submit" value="">Sign in</button>
+
+                </form>
+            </div>
+
+            <div class=" col-xs-0  col-lg-5 col-md-3 col-sm-3 col-1">
+
+            </div>
+        </div>
+    </div>
+ <script>
+     $(function () {
+         $('form[name="callback"]').validate({
+             rules: {
+                 UserName: 'required',
+                 Password: 'required',
+                 confirmpassword: {
+                     equalTo: "#Password",
+                     required: true,
+                 },
+                 Email: {
+                     required: true,
+                     email: true,
+                 },
+
+             },
+             messages: {
+                 UserName: 'Enter Name',
+                 Password: 'Enter Password',
+                 Email: 'Enter correct E-mail',
+                 confirmpassword: 'Do not mach',
+
+             },
+             submitHandler: function (form) {
+                 form.submit();
+             }
+         });
+     });
+ </script>
+

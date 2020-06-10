@@ -1,8 +1,6 @@
-﻿
-
-
-#parent {
+﻿#parent {
     padding: 5% 0;
+    padding-top:200px;
 }
 
 #child {
@@ -19,14 +17,14 @@
 
 .btn {
     border-radius: 53px 70px 60px 64px !important;
+    padding:10px;
 }
 
 .error {
     background-color: #00adef;
-    border: none !important;
+    border:none !important;
     color: red;
     border-radius: 53px 70px 60px 64px;
     margin-top: 10px;
     text-align: center
 }
-

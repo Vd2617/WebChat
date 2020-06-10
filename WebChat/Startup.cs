@@ -35,6 +35,7 @@ namespace WebChat
         {
            
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddSignalR();
             services.AddDbContext<IdentityContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -83,6 +84,7 @@ namespace WebChat
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 
                 endpoints.MapHub<ChatHub>("/chat");
+                endpoints.MapRazorPages();
             });
         }
     }
