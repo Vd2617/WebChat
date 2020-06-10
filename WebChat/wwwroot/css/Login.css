@@ -1,23 +1,15 @@
-﻿#parent {
-    padding: 5% 0;
-    padding-top:200px;
+﻿.form-l {
+    margin-top:100px !important;
 }
-
-#child {
-    padding: 10% 0;
-}
-
-.row {
-    border: 1px;
-}
+  
 
 .form-control {
     border-radius: 53px 70px 60px 64px !important;
 }
 
-.btn {
+.send-f {
     border-radius: 53px 70px 60px 64px !important;
-    padding:10px;
+    padding-top:10px !important;
 }
 
 .error {
