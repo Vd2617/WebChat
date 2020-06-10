@@ -15,7 +15,7 @@ connection.on("ReceiveMessage", function (message,time) {
     var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
     var messagetime = time;
-    li.className = "list-group-item align-self-start";
+    li.className = "list-group-item align-self-start item";
   
         li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + messagetime + "</small></div></p><img src=\"" + "./other.jpg" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
    
@@ -54,7 +54,7 @@ function ShowClientMessage() {
     var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
 
-    li.className = "list-group-item align-self-end";
+    li.className = "list-group-item align-self-end item";
 
     var text = document.getElementById('messageText').value;
 

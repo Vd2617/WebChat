@@ -37,6 +37,7 @@ namespace WebChat
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddSignalR();
+
             services.AddDbContext<IdentityContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<User, IdentityRole>(opts => {
@@ -56,6 +57,8 @@ namespace WebChat
             })
 
             .AddEntityFrameworkStores<IdentityContext>();
+
+            services.AddDbContext<MessageContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,9 +9,23 @@ namespace WebChat.Hub
 {
     public class ChatHub: Microsoft.AspNetCore.SignalR.Hub
     {
+        MessageContext _context;
+        public ChatHub(MessageContext context) {
+            this._context = context;
+            
+            
+        }
         public async Task Send(string message,string time)
         {
+            TextMessage textMessage = new TextMessage(time);
+            textMessage.Author = "Anonimous";
+            textMessage.MessageTime = time;
+            textMessage.Text = message;
+            _context.Add(textMessage);
+            await _context.SaveChangesAsync();
+
             await this.Clients.Others.SendAsync("ReceiveMessage",message,time);
+
            
         }
     }

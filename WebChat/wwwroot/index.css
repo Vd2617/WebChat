@@ -3,16 +3,20 @@
     margin-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
-    width: 350px;
+    width: 300px;
     margin: 0px auto;
     text-align: center;
     padding: 15px;
 }
-
+.item {
+    background: #00adef !important;
+    border:none!important;
+}
 .text-area-form {
     border-color: #333333;
     border-radius: 20px;
     text-align: center;
+    outline: 0 !important;
 }
 
 .message-box {
@@ -22,17 +26,17 @@
 .me-message {
     width: 250px;
     border-color: #8b00ff;
-    background-color: #333333;
+    background-color: #333333!important;
     border: 0px;
-    border-radius: 0px 21px 29px 24px;
+    border-radius: 0px 21px 29px 24px!important;
 }
 
 .other-message {
     width: 250px;
-    border-color: #8b00ff;
-    background-color: #1298e5;
+    border-color: #00adef!important;
+    background-color: #a358e8 !important;
     border: 0px;
-    border-radius: 21px 21px 29px 0px;
+    border-radius: 21px 21px 29px 0px !important;
 }
 
 .list-group-item {
