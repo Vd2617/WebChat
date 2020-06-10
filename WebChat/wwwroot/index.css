@@ -51,9 +51,12 @@
 
 .fa-paper-plane {
     padding-left: 4px;
-    color: #333333;
+    color: #ffffff !important;
 }
 
     .fa-paper-plane:hover {
-        color: chartreuse;
+        color: #000000 !important;
     }
+.btn-s {
+    outline: 0 !important;
+}

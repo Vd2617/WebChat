@@ -12,7 +12,7 @@ document.getElementById("sendButton").disabled = true;
 connection.on("ReceiveMessage", function (message,time) {
 
     var text = message;
-    var parent = document.getElementsByTagName("ul")[0];
+    var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
     var messagetime = time;
     li.className = "list-group-item align-self-start";
@@ -51,8 +51,7 @@ function GetTime() {
 
 function ShowClientMessage() {
     
-    var parent = document.getElementsByTagName("ul")[0];
-
+    var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
 
     li.className = "list-group-item align-self-end";
@@ -82,4 +81,17 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     
 
     event.preventDefault();
+});
+
+
+//other code scrol to textarea
+(document).ready(function () {
+    $("scroll-to").click(function () {
+        var elementClick = $(this).attr("href")
+        var destination = $(elementClick).offset().top;
+        jQuery("html:not(:animated),body:not(:animated)").animate({
+            scrollTop: destination
+        }, 800);
+        return false;
+    });
 });
