@@ -9,51 +9,51 @@ var connection = connection = new signalR.HubConnectionBuilder()
 
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (message,time) {
+connection.on("ReceiveMessage", function (message, time) {
 
     var text = message;
     var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
     var messagetime = time;
     li.className = "list-group-item align-self-start item";
-  
-        li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + messagetime + "</small></div></p><img src=\"" + "./other.jpg" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
-   
+
+    li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + messagetime + "</small></div></p><img src=\"" + "./other.jpg" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
+
     parent.appendChild(li);
-    scrollToElement($("#messageText")); 
-   
+    scrollToElement($("#messageText"));
+
 });
 
- connection.start().then(function () {
+connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
-    }).catch(function (err) {
-      return console.error(err.toString());
- });
+}).catch(function (err) {
+    return console.error(err.toString());
+});
 
 function GetTime() {
 
-      var currentDate = new Date();
+    var currentDate = new Date();
 
-      var hours = currentDate.getHours();
+    var hours = currentDate.getHours();
 
-      var minutes = currentDate.getMinutes();
+    var minutes = currentDate.getMinutes();
 
-      var strMinutes = minutes.toLocaleString();
+    var strMinutes = minutes.toLocaleString();
 
-      var strHours = hours.toLocaleString();
+    var strHours = hours.toLocaleString();
 
-      if (minutes < 10)
-          strMinutes = "0" + strMinutes;
+    if (minutes < 10)
+        strMinutes = "0" + strMinutes;
 
-      if (hours < 10)
-          strHours = "0" + strHours;
+    if (hours < 10)
+        strHours = "0" + strHours;
 
-       return strHours + ":" + strMinutes;;
+    return strHours + ":" + strMinutes;;
 }
 
 function ShowClientMessage() {
 
-   
+
     var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
 
@@ -66,28 +66,28 @@ function ShowClientMessage() {
     li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + time + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
 
     parent.appendChild(li);
-   
-    scrollToElement($("#messageText")); 
-    
 
-    }
-     document.getElementById("sendButton").addEventListener("click", function (event) {
+    scrollToElement($("#messageText"));
 
-     
-       ShowClientMessage();
 
-       var message = document.getElementById("messageText").value;
+}
+document.getElementById("sendButton").addEventListener("click", function (event) {
 
-       var time = GetTime();
 
-       connection.invoke("Send", message, time).catch(function (err) {
-           return console.error(err.toString());
-          
-          
-          
+    ShowClientMessage();
+
+    var message = document.getElementById("messageText").value;
+
+    var time = GetTime();
+
+    connection.invoke("Send", message, time).catch(function (err) {
+        return console.error(err.toString());
+
+
+
     });
-   
-    
+
+
 
     event.preventDefault();
 });
@@ -95,22 +95,22 @@ function ShowClientMessage() {
 
 //other code scrol to textarea 
 
-    $("scroll-to").click(function () {
-        var elementClick = $(this).attr("href")
-        var destination = $(elementClick).offset().top;
-        jQuery("html:not(:animated),body:not(:animated)").animate({
-            scrollTop: destination
-        }, 800);
-        return false;
-    });
+$("scroll-to").click(function () {
+    var elementClick = $(this).attr("href")
+    var destination = $(elementClick).offset().top;
+    jQuery("html:not(:animated),body:not(:animated)").animate({
+        scrollTop: destination
+    }, 800);
+    return false;
+});
 
 //where send message scroll to text area
 
 function scrollToElement(ele) {
-   
-    
-        $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
-    }
-  
 
-  
+
+    $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
+}
+
+
+
