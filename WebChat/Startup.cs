@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using WebChat.Hub;
 using WebChat.Models;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +32,7 @@ namespace WebChat
             services.AddRazorPages();
             services.AddSignalR();
 
-            services.AddDbContext<IdentityContext>(options =>
+            services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<User, IdentityRole>(opts => {
 
@@ -52,13 +46,13 @@ namespace WebChat
 
                 opts.Password.RequireDigit = false;
 
-                //opts.Lockout.AllowedForNewUsers = true;
+                
 
             })
 
-            .AddEntityFrameworkStores<IdentityContext>();
+            .AddEntityFrameworkStores<ApplicationContext>();
 
-            services.AddDbContext<MessageContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
