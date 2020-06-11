@@ -20,6 +20,8 @@ connection.on("ReceiveMessage", function (message,time) {
         li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + messagetime + "</small></div></p><img src=\"" + "./other.jpg" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
    
     parent.appendChild(li);
+    scrollToElement($("#messageText")); 
+   
 });
 
  connection.start().then(function () {
@@ -50,7 +52,8 @@ function GetTime() {
 }
 
 function ShowClientMessage() {
-    
+
+   
     var parent = document.getElementsByClassName("message-box")[0];
     var li = document.createElement("li");
 
@@ -63,10 +66,14 @@ function ShowClientMessage() {
     li.innerHTML = "<div class=\"card me-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + time + "</small></div></p><img src=\"" + "./1.png" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
 
     parent.appendChild(li);
+   
+    scrollToElement($("#messageText")); 
+    
 
     }
-document.getElementById("sendButton").addEventListener("click", function (event) {
+     document.getElementById("sendButton").addEventListener("click", function (event) {
 
+     
        ShowClientMessage();
 
        var message = document.getElementById("messageText").value;
@@ -75,7 +82,9 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 
        connection.invoke("Send", message, time).catch(function (err) {
            return console.error(err.toString());
-           ShowClientMessage();
+          
+          
+          
     });
    
     
@@ -84,8 +93,8 @@ document.getElementById("sendButton").addEventListener("click", function (event)
 });
 
 
-//other code scrol to textarea
-(document).ready(function () {
+//other code scrol to textarea 
+
     $("scroll-to").click(function () {
         var elementClick = $(this).attr("href")
         var destination = $(elementClick).offset().top;
@@ -94,4 +103,14 @@ document.getElementById("sendButton").addEventListener("click", function (event)
         }, 800);
         return false;
     });
-});
+
+//where send message scroll to text area
+
+function scrollToElement(ele) {
+   
+    
+        $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
+    }
+  
+
+  
