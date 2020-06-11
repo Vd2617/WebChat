@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     scrollToElement($("#messageText"));
     "use strict";
+    var messageCounter = 0;
     var connection = connection = new signalR.HubConnectionBuilder()
         .configureLogging(signalR.LogLevel.Debug)
         .withUrl("/chat", {
@@ -22,8 +23,12 @@
         li.innerHTML = "<div class=\"card other-message \"><p class=\"text text-white text-center\">" + text + "<div class=\"text text-right mr-3 text-white\"><small>" + messagetime + "</small></div></p><img src=\"" + "./other.jpg" + "\" alt=\"Avatar\" class=\" avatar\"></div >";
 
         parent.appendChild(li);
-        scrollToElement($("#messageText"));
-
+        /*scrollToElement($("#messageText"));*/
+        messageCounter = messageCounter + 1;
+        var bell = document.getElementById("bell");
+        bell.style.color = '#00adef!important';
+        var messagecounterEl = document.getElementById("message-counter");
+        messagecounterEl.innerText = messageCounter.toLocaleString();
     });
 
     connection.start().then(function () {
@@ -107,7 +112,21 @@
 
 
         $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
+        messageCounter++;
+       
     }
+    //scroll for textarea detected
+    
+       
+    $(document).scroll(function () {
+        s_top = $("body").scrollTop();
+        yes = $("#messageText").offset().top;
+        if (s_top > yes) {
+            var messagecounterEl = document.getElementById("message-counter");
+            messagecounterEl.innerText = "0";
+            messageCounter = 0;
+        }
+    });
 });
 
 
