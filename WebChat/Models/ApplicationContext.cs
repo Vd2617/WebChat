@@ -11,5 +11,9 @@ namespace WebChat.Models
         {
             Database.EnsureCreated();
         }
+
+        public ApplicationContext()
+        {
+        }
     }
 }

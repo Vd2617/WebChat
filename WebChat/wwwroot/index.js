@@ -73,22 +73,17 @@ function ShowClientMessage() {
 }
 document.getElementById("sendButton").addEventListener("click", function (event) {
 
-
-    ShowClientMessage();
-
     var message = document.getElementById("messageText").value;
 
-    var time = GetTime();
-
-    connection.invoke("Send", message, time).catch(function (err) {
+    var time = GetTime()
+      connection.invoke("Send", message, time).catch(function (err) {
         return console.error(err.toString());
 
 
 
     });
 
-
-
+    ShowClientMessage();
     event.preventDefault();
 });
 
