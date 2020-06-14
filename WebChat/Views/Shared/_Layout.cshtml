@@ -22,13 +22,9 @@
             padding-top: 70px !important;
             background: #00adef !important;
         }
-        .badge {
-            width: 25px;
-            height: 25px;
-            border: none;
-            opacity: .0;
+      
             
-        }
+        
         .fa-comment{
            color:white;
         }
@@ -44,6 +40,16 @@
         .fa-envelope-o {
             color: white;
         }
+        .fa-bell {
+            color:white;
+            padding-left:10px!important;
+            border:none!important;
+        }
+        .badge {
+           color:black;
+            
+        }
+       
     </style>
 </head>
 
@@ -63,14 +69,22 @@
                     <!-- Navbar links -->
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
-                        <ul class="navbar-nav mr-auto">
-                            
+                        <ul class="navbar-nav  icons mr-auto">
+
                             <li>
-                                <a href="#messageText" id="scroll-to"><i class="fa fa-2x fa-comment" aria-hidden="true"></i></a>
-                              
+                                <a href="#messageText" id="scroll-to" title="Write message"><i class="fa fa-2x fa-comment" aria-hidden="true"></i></a>
+
+
                             </li>
-     
+                            <li>
+                                <a href="#" title="Input message"><i class="fa fa-bell fa-2x" aria-hidden="true" id="bell"></i></a>
+                                <span class="badge badge-light" id="message-counter">0</span>
+
+                            </li>
+               
                         </ul>
+                      
+
                         @{
                             @await Html.PartialAsync("_AccountPartialView");
                         }
