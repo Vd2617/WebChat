@@ -9,71 +9,71 @@
 @{
     ViewData["Title"] = "Home";
 }
+    <div class="block">
+        <div class="container">
+            <div class="row">
 
-<div class="container">
-    <div class="row">
+                <div class="col mx-auto messages">
+                    <ul class="list-group message-box" id="message-box">
+                        <li class="list-group-item item align-self-end">
 
-        <div class="col mx-auto">
-            <ul class="list-group message-box">
-                <li class="list-group-item item align-self-end">
-
-                    <div class="card me-message">
-                        <img src="~/1.png" alt="Avatar" class=" avatar">
-                        <p class="text text-white text-center">
-                            message1
-                            <div class="text text-right mr-3 text-white">
-                                <small>18:50</small>
+                            <div class="card me-message">
+                                <img src="~/1.png" alt="Avatar" class=" avatar">
+                                <p class="text text-white text-center">
+                                    message1
+                                    <div class="text text-right mr-3 text-white">
+                                        <small>18:50</small>
+                                    </div>
+                                </p>
                             </div>
-                        </p>
-                    </div>
 
-                </li>
+                        </li>
 
-                <li class="list-group-item item">
+                        <li class="list-group-item item">
 
-                    <div class="card other-message  align-self-start">
+                            <div class="card other-message  align-self-start">
 
-                        <p class="text text-white text-center">
-                            message1
-                            <div class="text text-right mr-3 text-white">
-                                <small>18:50</small>
+                                <p class="text text-white text-center">
+                                    message1
+                                    <div class="text text-right mr-3 text-white">
+                                        <small>18:50</small>
+                                    </div>
+                                </p>
+                                <img src="~/other.jpg" alt="Avatar" class=" avatar">
                             </div>
-                        </p>
-                        <img src="~/other.jpg" alt="Avatar" class=" avatar">
-                    </div>
 
-                </li>
-                <li class="list-group-item align-self-end item">
+                        </li>
+                        <li class="list-group-item align-self-end item">
 
-                    <div class="card me-message ">
-                        <img src="~/1.png" alt="Avatar" class=" avatar">
-                        <p class="text text-white text-center">
-                            message1
-                            <div class="text text-right mr-3 text-white">
-                                <small>18:50</small>
+                            <div class="card me-message ">
+                                <img src="~/1.png" alt="Avatar" class=" avatar">
+                                <p class="text text-white text-center">
+                                    message1
+                                    <div class="text text-right mr-3 text-white">
+                                        <small>18:50</small>
+                                    </div>
+                                </p>
                             </div>
-                        </p>
+
+                        </li>
+
+
+
+
+                    </ul>
+                    <div class="form-inline top-form text-center">
+                        <button class="btn shadow-none" type="button">
+                            <i class="fa fa-paperclip fa-2x" aria-hidden="true" style="color:#333333"></i>
+
+                        </button>
+                        <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea><span class="fa fa-paper-plane fa-2x" aria-hidden="true" id="sendButton"></span>
+
+
                     </div>
-
-                </li>
-
-
-
-
-            </ul>
-            <div class="form-inline top-form text-center">
-                <button class="btn shadow-none" type="button">
-                    <i class="fa fa-paperclip fa-2x" aria-hidden="true" style="color:#333333"></i>
-
-                </button>
-                <textarea class="text-area-form text-center" id="messageText" placeholder="Type message"></textarea><span class="fa fa-paper-plane fa-2x" aria-hidden="true" id="sendButton"></span>
-
+                </div>
 
             </div>
         </div>
-
     </div>
-</div>
-
 
 
